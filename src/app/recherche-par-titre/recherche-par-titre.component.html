@@ -1,0 +1,55 @@
+<div class="container">
+  <form class="form-inline">
+    <div class="form-group mx-sm-3 mb-2 mt-2">
+      <label>Titre Film :&nbsp; </label>
+      <input
+        #nom
+        [(ngModel)]="searchTerm"
+        name="searchTerm"
+        class="form-control"
+      />
+
+      <!-- <input
+        class="form-control"
+        #searchTerm
+        (keyup)="onKeyUp(searchTerm.value)"
+      />
+      <input
+        type="text"
+        class="form-control"
+        [(ngModel)]="titreFilm"
+        name="titreFilm"
+        class="form-control"
+      />
+      <button
+        type="submit"
+        (click)="rechercherFilm()"
+        class="btn btn-primary mb-2 ml-2"
+      >
+        Rechercher
+      </button> -->
+    </div>
+  </form>
+  <div class="card shadow mb-4">
+    <div class="card-body">
+      <table class="table table-striped">
+        <tr>
+          <th>Id</th>
+          <th>Titre</th>
+          <th>Réalisateur</th>
+          <th>Date Sortie</th>
+          <th>Genre</th>
+        </tr>
+        <tbody *ngFor="let film of films | searchFilter : searchTerm">
+          <tr>
+            <td>{{ film.idFilm }}</td>
+            <td>{{ film.titreFilm }}</td>
+            <td>{{ film.realisateur }}</td>
+            <td>{{ film.dateSortie | date : "dd/MM/yyyy" }}</td>
+            <td>{{ film.genre!.nomGenre }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

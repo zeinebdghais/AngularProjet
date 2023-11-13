@@ -1,0 +1,32 @@
+<form>
+  <div [hidden]="ajout">
+    <label>ID nomGenre></label>
+    <input
+      [readOnly]="!ajout"
+      type="text"
+      [(ngModel)]="genre.idGenre"
+      name="idgenre"
+      class="form-control w-25"
+    />
+  </div>
+  <div>
+    <label>Nom Genre</label>
+    <input
+      type="text"
+      [(ngModel)]="genre.nomGenre"
+      name="nomgenre"
+      class="form-control"
+      placeholder="Entrez un nom de catégorie..."
+    />
+  </div>
+  <div class="mt-2">
+    <button
+      type="submit"
+      [disabled]="!genre.nomGenre"
+      class="btn btn-success"
+      (click)="saveGenre()"
+    >
+      {{ ajout ? "Ajouter" : "Modifier" }}
+    </button>
+  </div>
+</form>
